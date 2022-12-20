@@ -10,17 +10,17 @@ function App() {
 
   // Member fn
   let addMessage = () => {
-    let newMessage = { message: "Heloooooooo bro ....", messageTime: new Date() };
+    let newMessage = { message: "Tarri poha khata ka be!!!!!!!!!!", messageTime: new Date() };
     list = [newMessage, ...list];
     setList(list);
   };
 
   return (
     <div>
-      <h1 className="bg-primary text-white p-3">Messaging Demo</h1>
+      <h1 className="bg-secondary text-white p-3">Messaging Demo</h1>
 
       <input
-        className="btn btn-primary"
+        className="btn btn-success"
         type="button"
         value="Add Message"
         onClick={addMessage}
