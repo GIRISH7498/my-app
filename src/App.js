@@ -1,92 +1,62 @@
+import { useState } from "react";
 
-import './App.css';
-// 1st program styling
-// function App() {
-//   let mystyle = { color: "white", background: "purple" };
+function App() {
+  let [list] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1]);
+  let [theme, setTheme] = useState("primary");
 
-//   return (
-//     <div>
-//       <h1 className="beautify">Hello Again!</h1>
+  // Member funcn
+  let makePrimaryTheme = () => {
+    theme = "primary";
+    setTheme(theme);
+  };
 
-//       {/** This is kind of internal. Note: Only one curly braces. */}
-//       <h1 style={mystyle}>Hello World</h1>
+  let makeSuccessTheme = () => {
+    theme = "success";
+    setTheme(theme);
+  };
 
-//       {/* THIS IS INLINE STYLING */}
-//       <h1 style={{ color: "white", backgroundColor: "red" }}>Hello</h1>
-//     </div>
-//   );
-// }
+  let makeDangerTheme = () => {
+    theme = "danger";
+    setTheme(theme);
+  };
 
-// 2nd program styling
-// function App() {
-//   return (
-//     <div>
-//       <h1 className="beautify">External Styling!</h1>
-//     </div>
-//   );
-// }
+  return (
+    <div>
+      <div className="sticky-top">
+        <h1 className={`bg-${theme} text-light p-3`}>
+          Bootstrap Styling! {theme}
+        </h1>
 
-// 3rd program bootstrap
-// function App() {
-//     return (
-//       <div>
-//         <h1 className="bg-dark text-light p-3">Bootstrap Styling!</h1>
-  
-//         <h1 className="bg-success" style={{ color: "#fff" }}>
-//           hello
-//         </h1>
-//       </div>
-//     );
-//   }
-// 4th program
-// import { useState } from "react";
-// function App() {
-//     let [theme, setTheme] = useState("primary");
-  
-//     // Member funcn
-//     let makePrimaryTheme = () => {
-//       theme = "primary";
-//       setTheme(theme);
-//     };
-  
-//     let makeSuccessTheme = () => {
-//       theme = "success";
-//       setTheme(theme);
-//     };
-  
-//     let makeDangerTheme = () => {
-//       theme = "danger";
-//       setTheme(theme);
-//     };
-  
-//     return (
-//       <div>
-//         <h1 className={`bg-${theme} text-light p-3`}>
-//           Bootstrap Styling! {theme}
-//         </h1>
-  
-//         <input
-//           className="btn btn-primary"
-//           type="button"
-//           value="Primary Theme"
-//           onClick={makePrimaryTheme}
-//         />
-//         <input
-//           className="btn btn-success"
-//           type="button"
-//           value="Success Theme"
-//           onClick={makeSuccessTheme}
-//         />
-//         <input
-//           className="btn btn-danger"
-//           type="button"
-//           value="Danger Theme"
-//           onClick={makeDangerTheme}
-//         />
-//       </div>
-//     );
-//   }
-//   5th program
+        <input
+          className="btn btn-primary"
+          type="button"
+          value=""
+          onClick={makePrimaryTheme}
+        />
+        <input
+          className="btn btn-success"
+          type="button"
+          value=""
+          onClick={makeSuccessTheme}
+        />
+        <input
+          className="btn btn-danger"
+          type="button"
+          value=""
+          onClick={makeDangerTheme}
+        />
+      </div>
 
+      {list.map((item) => (
+        <div className={`alert alert-${theme} my-1`}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos,
+          natus fugiat incidunt pariatur delectus libero in dicta beatae
+          adipisci ipsa eius sint autem totam earum rerum ab consequatur dolor
+          omnis.
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default App;
