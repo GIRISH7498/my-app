@@ -1,46 +1,52 @@
-import { useState } from "react";
-
 function App() {
-  let [theme, setTheme] = useState("primary");
-
-  // Member funcn
-  let updateTheme = (p1 = "primary") => {
-    theme = p1;
-    setTheme(theme);
-  };
-
-  // VIEW
-  return (
-    <div>
-      <div className="sticky-top">
-        <h1 className={`bg-${theme} text-light p-3`}>
-          Bootstrap Styling! {theme}
-        </h1>
-
+    let clickMe1 = () => {
+      console.log("Hello");
+    };
+  
+    let clickMe2 = (e) => {
+      console.log(e);
+    };
+  
+    // Custom Parameter :: using arrow funcn
+    let clickMe3 = (p1) => {
+      console.log(p1);
+    };
+  
+    let clickMe4 = (e, p1) => {
+      console.log(e, p1);
+    };
+  
+    return (
+      <div>
+        <h1>Btn Click Demo</h1>
+  
+        {/** Default No param */}
+        <input type="button" value="Click Me 1" onClick={clickMe1} />
+  
+        {/** Default Event Param */}
+        <input type="button" value="Click Me 2" onClick={clickMe2} />
+  
+        {/** Custom Param */}
         <input
-          className="btn btn-primary"
           type="button"
-          value="Primary"
-          // onClick = {updateTheme}
-          onClick={() => updateTheme("primary")}
+          value="Click Me 3"
+          onClick={() => clickMe3("primary")}
         />
         <input
-          className="btn btn-success"
           type="button"
-          value="Success"
-          // onClick={updateTheme}
-          onClick={() => updateTheme("success")}
+          value="Click Me 3"
+          onClick={() => clickMe3("danger")}
         />
+  
+        {/** Event + Custom Param */}
         <input
-          className="btn btn-danger"
           type="button"
-          value="Danger"
-          // onClick={updateTheme}
-          onClick={() => updateTheme("danger")}
+          value="Click Me 4"
+          onClick={(e) => clickMe4(e, "adsfaf adsf")}
         />
       </div>
-    </div>
-  );
-}
-
-export default App;
+    );
+  }
+  
+  export default App;
+  
