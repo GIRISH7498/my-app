@@ -1,16 +1,23 @@
 import { useState } from "react";
 
 function App() {
+  let [message, setMessage] = useState("Hello");
   let [list, setList] = useState([
     { message: "Hi", messageTime: new Date() },
     { message: "How r u", messageTime: new Date() },
-    { message: "I am fine", messageTime: new Date() },
-    { message: "Thank you!!!", messageTime: new Date() },
+    { message: "Good", messageTime: new Date() },
+    { message: "fine bro", messageTime: new Date() },
   ]);
 
   // Member fn
+  let updateInputMessage = (e) => {
+    message = e.target.value;
+    setMessage(message);
+  };
+
   let addMessage = () => {
-    let newMessage = { message: "Tarri poha khata ka be!!!!!!!!!!", messageTime: new Date() };
+    // let newMessage = { message: "Chill bro...!", messageTime: new Date() };
+    let newMessage = { message: message, messageTime: new Date() };
     list = [newMessage, ...list];
     setList(list);
   };
@@ -19,16 +26,25 @@ function App() {
     <div>
       <h1 className="bg-secondary text-white p-3">Messaging Demo</h1>
 
-      <input
-        className="btn btn-success"
-        type="button"
-        value="Add Message"
-        onClick={addMessage}
-      />
+      <div className="d-flex">
+        <input
+          className="form-control"
+          value={message}
+          onChange={updateInputMessage}
+          type="text"
+          placeholder="Enter Message"
+        />
+        <input
+          className="btn btn-success"
+          type="button"
+          value="Add Message"
+          onClick={addMessage}
+        />
+      </div>
 
       {list.map((item, index) => (
         <div key={index} className="d-flex my-1">
-          <div className="badge text-bg-primary">
+          <div className="badge text-bg-dark">
             {item.message}
             <span className="ms-4">
               {item.messageTime.getHours()}:{item.messageTime.getMinutes()}
